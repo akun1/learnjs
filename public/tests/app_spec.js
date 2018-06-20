@@ -15,6 +15,12 @@ describe('LearnJS', function() {
 		learnjs.showView('#problem-42');
 		expect(learnjs.problemView).toHaveBeenCalledWith('42');
 	});
+//5th test checks if showview function is called with url hash as argument
+	it('invokes the router when loaded', function() {
+		spyOn(learnjs, 'showView');
+		learnjs.appOnReady();
+		expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash)
+	})	
 //this is a new context called 'problem view' within the larger 'LearnJS' context
 	describe('problem view', function() {
 //4th test tests to see if problem number is in result of problem view function		
@@ -23,5 +29,4 @@ describe('LearnJS', function() {
 			expect(view.text()).toEqual('Problem #1 Coming Soon!')
 		});
 	}); 
-
 });
