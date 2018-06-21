@@ -35,7 +35,7 @@ describe('LearnJS', function() {
 //4th test tests to see if problem number is in result of problem view function		
 		it('has a title that includes the problem number', function() {
 			var view = learnjs.problemView('1');
-			expect(view.text()).toEqual('Problem #1 Coming Soon!')
+			expect(view.text()).toEqual('Problem #1')
 		});
 	}); 
 });

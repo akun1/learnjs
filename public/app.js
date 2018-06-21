@@ -2,9 +2,28 @@
 
 var learnjs = {}; //this is our namespace
 
+learnjs.problems = [
+	{
+		description: "what's the truth?",
+		code: "function problem() { return __; }"
+	},
+	{
+		description: "Simple Math",
+		code: "function problem() { return 42 === 6 * __; }"
+	}
+];
+
+learnjs.applyObject = function(obj,elem) {
+	for(var key in obj) {
+		elem.find('[data-name="' + key + '"]').text(obj[key]);
+	}
+};
+
 learnjs.problemView = function(problemNumber) {
-	var title = 'Problem #' + problemNumber + ' Coming Soon!'
-	return $('<div class="problem-view">').text(title);
+	var view = $('.templates .problem-view').clone();
+	view.find('.title').text('Problem #' + problemNumber);
+	learnjs.applyObject(learnjs.problems[problemNumber-1], view);
+	return view
 };
 
 learnjs.showView = function(hash) {
