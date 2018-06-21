@@ -20,7 +20,16 @@ describe('LearnJS', function() {
 		spyOn(learnjs, 'showView');
 		learnjs.appOnReady();
 		expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash)
-	})	
+	})
+
+//6th test
+	it('subscribes to the hash change event', function() {
+		learnjs.appOnReady();
+		spyOn(learnjs,'showView');
+		$(window).trigger('hashchange');
+		expect(learnjs.showView).toHaveBeenCalledWith(window.location.hash);
+	});
+
 //this is a new context called 'problem view' within the larger 'LearnJS' context
 	describe('problem view', function() {
 //4th test tests to see if problem number is in result of problem view function		
